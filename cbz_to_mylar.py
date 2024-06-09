@@ -31,7 +31,7 @@ def get_series_id(issue_id):
     if response.status_code == 200:
         data = response.json()
         return data.get('results', {}).get('volume', {}).get('id')
-    elif response.status_code == 429:
+    elif response.status_code == 420:
         raise Exception("I reached my rate limit on all my keys, or my cache is down for whatever reason. Please wait and try again, or add your own api key.")
     return None
 
