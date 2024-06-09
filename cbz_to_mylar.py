@@ -53,14 +53,15 @@ def mylar_add_comic(comic_id):
 def add_to_mylar(comics):
     for comic_id in comics:
         existing_comic_id = mylar_get_comic(comic_id)
-        if existing_comic_id != comic_id:
-            status_code = mylar_add_comic(comic_id)
-            if status_code == 200:
-                print(f"Comic ID {comic_id} added successfully.")
-            else:
-                print(f"Failed to add Comic ID {comic_id}. Status code: {status_code}")
+        if int(existing_comic_id) == int(comic_id):
+            print(f"{comic_id} - Series already exists in Mylar.")
+            continue
+        status_code = mylar_add_comic(comic_id)
+        if status_code == 200:
+            print(f"Comic ID {comic_id} added successfully.")
         else:
-            print(f"{comic_id} - already exists")
+            print(f"Failed to add Comic ID {comic_id}. Status code: {status_code}")
+        
 
 
 def main():
